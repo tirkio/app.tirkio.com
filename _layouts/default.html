@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/assets/images/favicon.ico">
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="stylesheet" href="https://unpkg.com/framework7/framework7-bundle.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/framework7-icons/css/framework7-icons.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://unpkg.com/framework7/framework7-bundle.min.js"></script>
+    <title>{{ page.title }}</title>
+  </head>
+  <body>
+    <div class="page dark">
+      <div class="navbar">
+        <div class="navbar-bg"></div>
+        <div class="navbar-inner sliding">
+          <div class="title">{{ page.title }}</div>
+          <div class="right">
+            <a class="link" @click=${togglePosition}>X
+            </a>
+          </div>
+        </div>
+      </div>
+      {% include navbar.html %}
+      <div class="tabs-swipeable-wrap">
+        <div class="tabs">
+          <div class="page-content tab tab-active">{{ content }}</div>
+        </div>
+      </div>
+    </div>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/assets/js/service-worker.js')
+          .then(() => console.log('Service Worker Registered'));
+      }
+    </script>
+    <script src="/assets/js/app.js"></script>   
+  </body>
+</html>
